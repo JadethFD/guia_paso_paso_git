@@ -1,0 +1,126 @@
+html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Hola Mundo!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0fdf4;
+            color: #1e293b;
+            transition: background-color 0.4s ease;
+            padding: 20px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
+
+        p {
+            color: #64748b;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.1s ease, background-color 0.2s ease;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .btn-primary {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #334155;
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1 id="title">¡Hola, Mundo!</h1>
+        <p id="subtitle">Español</p>
+
+        <div class="buttons">
+            <button class="btn-primary" onclick="cambiarIdioma()">Cambiar Idioma</button>
+            <button class="btn-secondary" onclick="cambiarColor()">Cambiar Fondo</button>
+        </div>
+    </div>
+
+    <script>
+        const saludos = [
+            { texto: "¡Hola, Mundo!", lang: "Español" },
+            { texto: "Hello, World!", lang: "Inglés" },
+            { texto: "Bonjour, le Monde!", lang: "Francés" },
+            { texto: "Ciao, Mondo!", lang: "Italiano" },
+            { texto: "Hallo, Welt!", lang: "Alemán" }
+        ];
+
+        const colores = ["#f0fdf4", "#eff6ff", "#fef2f2", "#faf5ff", "#fffbe0"];
+
+        let indiceSaludo = 0;
+        let indiceColor = 0;
+
+        function cambiarIdioma() {
+            indiceSaludo = (indiceSaludo + 1) % saludos.length;
+            document.getElementById("title").textContent = saludos[indiceSaludo].texto;
+            document.getElementById("subtitle").textContent = saludos[indiceSaludo].lang;
+        }
+
+        function cambiarColor() {
+            indiceColor = (indiceColor + 1) % colores.length;
+            document.body.style.backgroundColor = colores[indiceColor];
+        }
+    </script>
+</body>
+</html>
